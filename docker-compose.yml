@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  weather-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prd
+    environment:
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+    ports:
+    - "8080:8080"
