@@ -1,5 +1,20 @@
 # Weather App - Go
 
+A aplicação está publicada no Google Cloud Run:
+
+🔗 URL pública:
+https://weather-app-go-418541402693.us-central1.run.app
+
+📌 Exemplo de uso:
+Consulta do clima por CEP:
+
+```
+GET /weather?cep=20021340
+```
+
+🔍 Exemplo real (clima do Rio de Janeiro):
+https://weather-app-go-418541402693.us-central1.run.app/weather?cep=20021340
+
 ## Português
 
 Este projeto é uma API simples escrita em Go que recebe um CEP, identifica a cidade e retorna a temperatura atual em graus Celsius, Fahrenheit e Kelvin.
