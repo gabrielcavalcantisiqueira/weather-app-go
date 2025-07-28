@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/gabrielcavalcantisiqueira/weather-app-go/internal/service"
 )
@@ -24,6 +25,9 @@ func (s ViaCEPService) GetViaCEPInfo(cep string) (*service.ViaCEPResponse, error
 	var data service.ViaCEPResponse
 	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
 		return nil, err
+	}
+	if hasError := strings.ToLower(data.Erro) == "true"; hasError {
+		return nil, fmt.Errorf("not found")
 	}
 	return &data, nil
 }

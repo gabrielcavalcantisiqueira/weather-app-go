@@ -25,7 +25,7 @@ func NewGetWeatherUseCase(weatherService service.WeatherServiceInterface, viaCEP
 func (uc *GetWeatherUseCase) Execute(cep string) (*entity.Weather, error) {
 	valid, _ := regexp.MatchString(`^\d{8}$`, cep)
 	if !valid {
-		return nil, ErrCannotFindZipCode
+		return nil, ErrInvalidZipCode
 	}
 	cepInfo, err := uc.ViaCEPService.GetViaCEPInfo(cep)
 	if err != nil {
@@ -41,6 +41,5 @@ func (uc *GetWeatherUseCase) Execute(cep string) (*entity.Weather, error) {
 		}
 		return nil, err
 	}
-
 	return weather, nil
 }
